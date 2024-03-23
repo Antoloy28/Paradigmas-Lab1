@@ -1,6 +1,6 @@
 ---
 title: Laboratorio de Funcional
-author: acá van sus nombres
+author: Antonela Loyola, Nicolás Cagliero, Mauricio Llugdar
 ---
 La consigna del laboratorio está en https://tinyurl.com/funcional-2024-famaf
 
