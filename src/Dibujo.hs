@@ -52,10 +52,10 @@ espejar = Espejar
 (^^^) = Encimar
 
 (.-.) :: Dibujo a -> Dibujo a -> Dibujo a
-(.-.) = undefined
+(.-.) = Apilar 1 1
 
 (///) :: Dibujo a -> Dibujo a -> Dibujo a
-(///) = undefined
+(///) = Juntar 1 1
 
 -- rotaciones
 r90 :: Dibujo a -> Dibujo a
