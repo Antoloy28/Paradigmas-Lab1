@@ -52,10 +52,10 @@ espejar = Espejar
 (^^^) = Encimar
 
 (.-.) :: Dibujo a -> Dibujo a -> Dibujo a
-(.-.) = Apilar
+(.-.) = undefined
 
 (///) :: Dibujo a -> Dibujo a -> Dibujo a
-(///) = Juntar
+(///) = undefined
 
 -- rotaciones
 r90 :: Dibujo a -> Dibujo a
@@ -73,7 +73,7 @@ encimar4 d = Encimar d (Encimar (rot45 d) (Encimar (r90 d) (Encimar (r180 d) (r2
 
 -- cuatro figuras en un cuadrante.
 cuarteto :: Dibujo a -> Dibujo a -> Dibujo a -> Dibujo a -> Dibujo a
-cuarteto = undefined
+cuarteto a b c d = Apilar 1 1 (Juntar 1 1 a b) (Juntar 1 1 c d)
 
 -- un cuarteto donde se repite la imagen, rotada (¡No confundir con encimar4!)
 ciclar :: Dibujo a -> Dibujo a
