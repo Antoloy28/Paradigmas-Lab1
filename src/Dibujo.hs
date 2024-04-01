@@ -95,7 +95,13 @@ mapDib f (Juntar n m a b) = Juntar n m (mapDib f a) (mapDib f b)
 
 -- Cambiar todas las básicas de acuerdo a la función.
 change :: (a -> Dibujo b) -> Dibujo a -> Dibujo b
-change = undefined
+change f (Figura x) = f x
+change f (Rotar a) = change f a
+change f (Espejar a) = change f a
+change f (Rot45 a) = change f a
+change f (Encimar a b) = Encimar (change f a) (change f b)
+change f (Apilar n m a b) = Apilar n m (change f a) (change f b)
+change f (Juntar n m a b) = Juntar n m (change f a) (change f b)
 
 -- Principio de recursión para Dibujos.
 foldDib ::
