@@ -77,7 +77,7 @@ cuarteto a b c d = Apilar 1 1 (Juntar 1 1 a b) (Juntar 1 1 c d)
 
 -- un cuarteto donde se repite la imagen, rotada (¡No confundir con encimar4!)
 ciclar :: Dibujo a -> Dibujo a
-ciclar = undefined
+ciclar a = cuarteto a (r90 a) (r180 a) (r270 a) 
 
 -- map para nuestro lenguaje
 mapDib :: (a -> b) -> Dibujo a -> Dibujo b
