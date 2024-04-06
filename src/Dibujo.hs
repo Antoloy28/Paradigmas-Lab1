@@ -1,7 +1,26 @@
 module Dibujo (
 	Dibujo, 
-	encimar, rotar, espejar, rot45, apilar, juntar 
-    ) where
+  comp,
+  figura,
+	encimar, 
+  rotar, 
+  espejar, 
+  rot45, 
+  apilar, 
+  juntar, 
+  (^^^),
+  (.-.),
+  (///),
+  r90,
+  r180,
+  r270,
+  encimar4,
+  cuarteto,
+  ciclar,
+  mapDib,
+  change,
+  foldDib
+) where
 
 
 -- nuestro lenguaje 
@@ -105,7 +124,7 @@ change f (Juntar n m a b) = Juntar n m (change f a) (change f b)
 
 -- Principio de recursión para Dibujos.
 foldDib ::
-  (a -> b) ->
+  (a -> b) -> 
   (b -> b) ->
   (b -> b) ->
   (b -> b) ->
@@ -114,4 +133,12 @@ foldDib ::
   (b -> b -> b) ->
   Dibujo a ->
   b
-foldDib = undefined
+
+-- f fRot fRot45 fEs fAp fJu fEn = f g h i j k l
+foldDib f _ _ _ _ _ _ (Figura fig) = f fig
+foldDib f g h i j k l (Rotar dib) = g (foldDib f g h i j k l dib)
+foldDib f g h i j k l (Rot45 dib) = h (foldDib f g h i j k l dib)
+foldDib f g h i j k l (Espejar dib) = i (foldDib f g h i j k l dib)
+foldDib f g h i j k l (Apilar n m dib1 dib2) = j n m (foldDib f g h i j k l dib1) (foldDib f g h i j k l dib2)
+foldDib f g h i j k l (Juntar n m dib1 dib2) = k n m (foldDib f g h i j k l dib1) (foldDib f g h i j k l dib2)
+foldDib f g h i j k l (Encimar dib1 dib2) = l (foldDib f g h i j k l dib1) (foldDib f g h i j k l dib2)
