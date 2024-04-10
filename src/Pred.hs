@@ -67,9 +67,11 @@ allDib :: Pred a -> Dibujo a -> Bool
 allDib p dib = foldDib p id id id andAJ andAJ andE dib
 
 -- Los dos predicados se cumplen para el elemento recibido.
-andP = undefined
+andP :: Pred a -> Pred a -> Pred a
+andP p g = (\x -> if p x && g x then True else False)
 
 -- Algún predicado se cumple para el elemento recibido.
-orP = undefined
+orP :: Pred a -> Pred a -> Pred a
+orP p g = (\x -> if p x || g x then True else False)
 
 falla = True
