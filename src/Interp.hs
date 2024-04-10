@@ -27,22 +27,30 @@ ov :: Picture -> Picture -> Picture
 ov p q = undefined
 
 r45 :: FloatingPic -> FloatingPic
-r45 = undefined
+r45 f d w h = f (d+(w+h)/2) ((w+h)/2) ((h-w)/2)
 
 rot :: FloatingPic -> FloatingPic
-rot = undefined
+rot f d w h = f (d + w) h (-w)
 
 esp :: FloatingPic -> FloatingPic
-esp = undefined
+esp f d w h = f (d+w) (-w) h
 
 sup :: FloatingPic -> FloatingPic -> FloatingPic
-sup = undefined
+sup f g d w h =  pictures [f d w h, g d w h]
 
 jun :: Float -> Float -> FloatingPic -> FloatingPic -> FloatingPic
-jun = undefined
+jun m n f g d w h = pictures[f d w' h, g (d+w') (r'*w) h]
+                where
+                    r' = n/(m+n)
+                    r  = m/(m+n)
+                    w' = r*w
 
 api :: Float -> Float -> FloatingPic -> FloatingPic -> FloatingPic
-api = undefined
+api m n f g d w h = pictures[f (d+h') w (r*h), g d w h']
+                where
+                    r' = n/(m+n)
+                    r  = m/(m+n)
+                    h' = r'*w
 
 interp :: Output a -> Output (Dibujo a)
 interp b = undefined

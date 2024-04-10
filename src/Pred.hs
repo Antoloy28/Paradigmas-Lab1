@@ -68,10 +68,10 @@ allDib p dib = foldDib p id id id andAJ andAJ andE dib
 
 -- Los dos predicados se cumplen para el elemento recibido.
 andP :: Pred a -> Pred a -> Pred a
-andP p g = (\x -> if p x && g x then True else False)
+andP p g x = p x && g x 
 
 -- Algún predicado se cumple para el elemento recibido.
 orP :: Pred a -> Pred a -> Pred a
-orP p g = (\x -> if p x || g x then True else False)
+orP p g x = p x || g x 
 
 falla = True
