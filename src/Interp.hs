@@ -24,7 +24,7 @@ initial (Conf n dib intBas) size = display win white $ withGrid fig size
 
 -- Interpretación de (^^^)
 ov :: Picture -> Picture -> Picture
-ov p q = undefined
+ov f g d w h =  pictures[p, q]
 
 r45 :: FloatingPic -> FloatingPic
 r45 f d w h = f (d+(w+h)/2) ((w+h)/2) ((h-w)/2)
@@ -36,7 +36,7 @@ esp :: FloatingPic -> FloatingPic
 esp f d w h = f (d+w) (-w) h
 
 sup :: FloatingPic -> FloatingPic -> FloatingPic
-sup f g d w h =  pictures [f d w h, g d w h]
+sup f g d w h =  pictures[f d w h, g d w h]
 
 jun :: Float -> Float -> FloatingPic -> FloatingPic -> FloatingPic
 jun m n f g d w h = pictures[f d w' h, g (d+w') (r'*w) h]
@@ -52,5 +52,8 @@ api m n f g d w h = pictures[f (d+h') w (r*h), g d w h']
                     r  = m/(m+n)
                     h' = r'*w
 
+-- (a -> FloatingPic) -> (Dibujo a -> Picture) = (a -> FloatingPic) -> Dibujo a -> Picture
+-- Currificación P => (Q => R) = (P ^ Q => R) 
+
 interp :: Output a -> Output (Dibujo a)
-interp b = undefined
+interp b dib = foldDib b rot t45 esp api jun sup dib 
