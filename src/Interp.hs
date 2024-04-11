@@ -8,7 +8,7 @@ import Dibujo
 import FloatingPic
 import Graphics.Gloss (Display (InWindow), color, display, makeColorI, pictures, translate, white, Picture)
 import qualified Graphics.Gloss.Data.Point.Arithmetic as V
-import Graphics.Gloss.Data.Vector (Vector, mulSV)
+import Graphics.Gloss.Data.Vector (mulSV)
 
 
 -- Dada una computación que construye una configuración, mostramos por
@@ -25,8 +25,8 @@ initial (Conf n dib intBas) size = display win white $ withGrid fig size
     grey = makeColorI 100 100 100 100
 
 -- Interpretación de (^^^)
-ov :: Picture -> Picture -> Picture
-ov p q =  pictures [p, q]
+ov :: FloatingPic -> FloatingPic -> FloatingPic
+ov f g d w h =  pictures [f d w h, g d w h]
 
 r45 :: FloatingPic -> FloatingPic
 r45 f d w h = f d_f w_f h_f
@@ -34,6 +34,7 @@ r45 f d w h = f d_f w_f h_f
               d_f = d V.+ mulSV 0.5 (w V.+ h)
               w_f = mulSV 0.5 (w V.+ h)
               h_f = mulSV 0.5 (h V.- w)
+
 rot :: FloatingPic -> FloatingPic
 rot f d w h = f d_f h h_f
             where
@@ -50,22 +51,23 @@ sup :: FloatingPic -> FloatingPic -> FloatingPic
 sup f g d w h =  pictures [f d w h, g d w h]
 
 jun :: Float -> Float -> FloatingPic -> FloatingPic -> FloatingPic
-jun m n f g d w h = pictures [f d w' h, g d_g w_g h]
+jun f_weight g_weight f g d w h = pictures [f d f_width h, g d_g g_width h]
                 where
-                    r' = n/(m+n)
-                    r  = m/(m+n)
-                    w' = mulSV r w
-                    w_g = mulSV r' w
-                    d_g = d V.+ w'
+                    total_weight = f_weight + g_weight
+                    f_share = f_weight/total_weight
+                    f_width = mulSV f_share w
+                    g_width = mulSV (1 - f_share) w
+                    d_g = d V.+ f_width
 
 api :: Float -> Float -> FloatingPic -> FloatingPic -> FloatingPic
-api m n f g d w h = pictures [f d_f w h_f, g d w h']
+api f_weight g_weight f g d w h = pictures [f d_f w h_f, g d w h_p]
                 where
-                    r' = n/(m+n)
-                    r  = m/(m+n)
-                    h' = mulSV r' w
-                    h_f = mulSV r h
-                    d_f = d V.+ h'
+                    total_weight = f_weight + g_weight
+                    f_share = f_weight/total_weight
+                    g_share = g_weight/total_weight
+                    h_p = mulSV g_share h
+                    d_f = d V.+ h_p
+                    h_f = mulSV f_share h
 
 -- (a -> FloatingPic) -> (Dibujo a -> FloatingPic) -> Picture = (a -> FloatingPic) -> Dibujo a -> Picture
 -- Currificación P => (Q => R) = (P ^ Q => R) 
