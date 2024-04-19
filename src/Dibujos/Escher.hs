@@ -59,7 +59,7 @@ escher n p = noneto esq lad (r270 esq)
                     lad = lado n (figura p)
 
 testAllEsch :: Dibujo Basica
-testAllEsch = escher 9 Triangulo
+testAllEsch = escher 8 Triangulo
 
 eschConf :: Conf
 eschConf = Conf {
