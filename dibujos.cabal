@@ -101,3 +101,12 @@ test-suite haha
     build-depends:    base ^>=4.17.2.1,
                       haha ^>=0.3.1.1
                       
+test-suite dibujinhos
+    import:           warnings
+    default-language: Haskell2010
+    other-modules:    Dibujo
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test src
+    main-is:          TestDibujos.hs
+    build-depends:    base ^>=4.17.2.1,
+                      HUnit ^>=1.6.2.0

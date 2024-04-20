@@ -38,14 +38,14 @@ main :: IO ()
 main = do
   args <- getArgs
   putStrLn (head args)
-  when (head args == "lista") $ do
-    putStrLn "Los dibujos disponibles son:"
-    mapM_ (putStrLn . name) configs
-    exitSuccess
+  --when (head args == "lista") $ do
+  --  putStrLn "Los dibujos disponibles son:"
+  --  mapM_ (putStrLn . name) configs
+  --  exitSuccess
   when (length args > 2 || null args) $ do
     putStrLn "Sólo puede elegir un dibujo. Para ver los dibujos use -l ."
     exitFailure
-  when (head args == "-l") $ do
+  when (head args == "--lista") $ do
     putStrLn "Los dibujos disponibles son:"
     mapM_ (putStrLn . name) configs
     exitSuccess

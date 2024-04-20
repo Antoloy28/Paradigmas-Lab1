@@ -1,9 +1,20 @@
 module Main (main) where
 import System.Exit (exitFailure)
 import Control.Monad (when)
-import Pred (falla)
+import Pred (anyDib, allDib, falla, cambiar)
+import Test.HUnit
+import Dibujo
+import Dibujo (figura)
 
-main :: IO ()
-main = do
-    putStrLn "Test suite not yet implemented."
-    when falla exitFailure
+testCambiar :: Test
+testCambiar = 
+    TestCase(assertEqual "Triangulo = Espejar Triangulo" 
+     (espejar (figura "Triangulo"))
+     (cambiar (== "Triangulo") (const (espejar (figura "Triangulo"))) (figura "Triangulo"))
+     )
+
+testPred :: Test
+testPred = 
+    TestList [testCambiar]
+
+main = runTestTT testPred
