@@ -62,6 +62,7 @@ executable dibujos
                       Pred,
                       Dibujos.Feo,
                       Dibujos.Grilla,
+                      Dibujos.Escher
     exposed-modules:  Dibujo, Pred, Interp
     build-depends:    base ^>=4.17.2.1,
                       gloss ^>=1.13.2.2,
