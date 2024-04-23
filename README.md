@@ -65,4 +65,4 @@ Main.hs: Solicita al usuario que ingrese el nombre de un dibujo y muestra el res
 La diferencia entre los predicados definidos en Pred.hs y los definidos en los tests es que los predicados definidos en Pred.hs sirven para la definicion de funciones que van a usar esos predicados como una condición, que de cumplirse, la funcion ejecutará un efecto en el dibujo que pasemos como parámetro. En cambio, en los tests damos predicados específicos para poder testear que las funciones hechas en Pred.hs tengan el funcionamiento esperado (se cumpla o no el predicado).
 
 # 4. Extras
-aca podriamos aclarar lo de live share
+Acá nos gustaría aclarar que estuvimos trabajando, en su gran mayoría, en un live share de visual studio code los 3 integrantes del grupo hablando por Discord. Por lo tanto se notará una diferencia con la cantidad de commits hechos por cada integrante pues siempre figuraba el nombre del dueño del live share. Pero garantizamos que los 3 integrantes entendemos y trbajamos por igual en este lab :)
