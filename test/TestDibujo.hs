@@ -1,11 +1,9 @@
 module Main (main) where
-import System.Exit (exitFailure)
-import Control.Monad (when)
+import System.Exit ()
+import Control.Monad()
 import Dibujo
 import Test.HUnit
-import Test.HUnit (Test(TestCase), assertEqual)
-import Dibujo (rot45, Dibujo (Rot45, Encimar), figura, encimar4)
-import Control.Exception (assert)
+import Control.Exception ()
 
 testFigura :: Test
 testFigura = 
@@ -33,6 +31,7 @@ testJuntar =
             (figura "Rectangulo")) (Juntar 2 2 (Figura "Triangulo") (Figura "Rectangulo")))
 
 --Lista para test
+l3 :: [Int]
 l3 = [1, 5, 4]
 
 testComp0 :: Test
@@ -67,11 +66,27 @@ testEncimar =
         (Encimar (figura "Triantangulo") (Encimar (rot45 (figura "Triantangulo")) (Encimar (r90 (figura "Triantangulo")) (Encimar (r180 (figura "Triantangulo")) (r270 (figura "Triantangulo"))))))
         (encimar4 (figura "Triantangulo"))
         )
+
+testMapdib :: Test
+testMapdib = 
+    TestCase(assertEqual "Cambio Rotar Triangulo por Rotar Cuadrado" 
+        (Rotar (Figura "Cuadrado"))
+        (mapDib (const "Cuadrado") (rotar (figura "Triangulo")))
+        )
+
+testChange :: Test
+testChange = 
+    TestCase(assertEqual "Cambio Rotar Triangulo por Rotar Rotar Cuadrado" 
+        (Rotar (Rotar (Figura "Cuadrado")))
+        (change (const (rotar (figura "Cuadrado"))) (rotar (figura "Triangulo")))
+        )
         
 testDibujo :: Test
 testDibujo = 
     TestList [testFigura, testRotar, testEspejar, testApilar, testJuntar, testComp0,
-     testComp1, testRot45, testR90, testR180, testR270, testEncimar]
+     testComp1, testRot45, testR90, testR180, testR270, testEncimar, testChange, testMapdib]
 
-main = runTestTT testDibujo
+
+main :: IO()
+main = runTestTTAndExit testDibujo
 

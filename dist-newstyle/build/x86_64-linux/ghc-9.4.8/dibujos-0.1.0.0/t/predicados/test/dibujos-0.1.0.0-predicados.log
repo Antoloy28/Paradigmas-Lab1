@@ -1,0 +1,4 @@
+Test suite predicados: RUNNING...
+Cases: 7  Tried: 0  Errors: 0  Failures: 0Cases: 7  Tried: 1  Errors: 0  Failures: 0Cases: 7  Tried: 2  Errors: 0  Failures: 0Cases: 7  Tried: 3  Errors: 0  Failures: 0Cases: 7  Tried: 4  Errors: 0  Failures: 0Cases: 7  Tried: 5  Errors: 0  Failures: 0Cases: 7  Tried: 6  Errors: 0  Failures: 0                                          Cases: 7  Tried: 7  Errors: 0  Failures: 0
+Test suite predicados: PASS
+Test suite logged to: /home/nicolas/Dropbox/Famaf/Paradigmas_2024/lab1/paradigmas-grupo1/dist-newstyle/build/x86_64-linux/ghc-9.4.8/dibujos-0.1.0.0/t/predicados/test/dibujos-0.1.0.0-predicados.log

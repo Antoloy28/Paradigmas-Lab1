@@ -46,12 +46,12 @@ getBinDir, getLibDir, getDynLibDir, getDataDir, getLibexecDir, getSysconfDir :: 
 
 
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
-bindir     = "/home/maurillugdar/.cabal/bin"
-libdir     = "/home/maurillugdar/.cabal/lib/x86_64-linux-ghc-9.4.8/dibujos-0.1.0.0-inplace-gloss"
-dynlibdir  = "/home/maurillugdar/.cabal/lib/x86_64-linux-ghc-9.4.8"
-datadir    = "/home/maurillugdar/.cabal/share/x86_64-linux-ghc-9.4.8/dibujos-0.1.0.0"
-libexecdir = "/home/maurillugdar/.cabal/libexec/x86_64-linux-ghc-9.4.8/dibujos-0.1.0.0"
-sysconfdir = "/home/maurillugdar/.cabal/etc"
+bindir     = "/home/nicolas/.cabal/bin"
+libdir     = "/home/nicolas/.cabal/lib/x86_64-linux-ghc-9.4.8/dibujos-0.1.0.0-inplace-gloss"
+dynlibdir  = "/home/nicolas/.cabal/lib/x86_64-linux-ghc-9.4.8"
+datadir    = "/home/nicolas/.cabal/share/x86_64-linux-ghc-9.4.8/dibujos-0.1.0.0"
+libexecdir = "/home/nicolas/.cabal/libexec/x86_64-linux-ghc-9.4.8/dibujos-0.1.0.0"
+sysconfdir = "/home/nicolas/.cabal/etc"
 
 getBinDir     = catchIO (getEnv "dibujos_bindir")     (\_ -> return bindir)
 getLibDir     = catchIO (getEnv "dibujos_libdir")     (\_ -> return libdir)

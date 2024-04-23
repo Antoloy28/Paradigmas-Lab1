@@ -2,10 +2,10 @@ module Dibujos.Escher (
     escher, eschConf
 ) where
 
-import Dibujo (Dibujo, figura, juntar, apilar, rot45, rotar, encimar, espejar, r90, r180, r270, cuarteto)
-import FloatingPic(Conf(..), Output, half, zero)
+import Dibujo (Dibujo, figura, juntar, apilar, rot45, encimar, espejar, r90, r180, r270, cuarteto)
+import FloatingPic(Conf(..), Output)
 import qualified Graphics.Gloss.Data.Point.Arithmetic as V
-import Graphics.Gloss ( Picture, blue, red, color, line, pictures, blank )
+import Graphics.Gloss ( Picture, blue, red, color, line, blank )
 
 data Color = Azul | Rojo
     deriving (Show, Eq)
@@ -14,13 +14,16 @@ data BasicaNotColor = Triangulo | Blank deriving (Show, Eq)
 
 type Basica = (BasicaNotColor, Color)
 
+vacia :: Dibujo Escher
+vacia = figura (Blank, Azul)
+
 colorear :: Color -> Picture -> Picture
 colorear Azul = color blue
 colorear Rojo = color red
 
 interpBasicaNotColor :: Output BasicaNotColor
 interpBasicaNotColor Triangulo d w h = line [d, d V.+ w, d V.+ h, d]
-interpBasicaNotColor Blank d w h = blank
+interpBasicaNotColor Blank _ _ _ = blank
 
 interpBasica :: Output Basica
 interpBasica (b, c) x y w = colorear c $ interpBasicaNotColor b x y w
@@ -41,12 +44,12 @@ dibujoT p = encimar p (encimar p2 (r270 p2))
 
 -- Esquina con nivel de detalle en base a la figura p.
 esquina :: Int -> Dibujo Escher -> Dibujo Escher
-esquina 1 p = cuarteto (figura (Blank, Azul)) (figura (Blank, Azul)) (figura (Blank, Azul)) (dibujoU p)
+esquina 1 p = cuarteto vacia vacia vacia (dibujoU p)
 esquina n p = cuarteto (esquina (n-1) p) (lado (n-1) p) (r90 (lado (n-1) p)) (dibujoU p)
 
 -- Lado con nivel de detalle.
 lado :: Int -> Dibujo Escher -> Dibujo Escher
-lado 1 p = cuarteto (figura (Blank, Azul)) (figura (Blank, Azul)) (r90 (dibujoT p)) (dibujoT p)
+lado 1 p = cuarteto vacia vacia (r90 (dibujoT p)) (dibujoT p)
 lado n p = cuarteto (lado (n-1) p) (lado (n-1) p) (r90 (dibujoT p)) (dibujoT p)
  
 -- Por suerte no tenemos que poner el tipo!

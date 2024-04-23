@@ -60,7 +60,7 @@ Main.hs: Solicita al usuario que ingrese el nombre de un dibujo y muestra el res
 - Claridad porque en algunos casos, el uso de fold puede hacer que el código sea más claro y fácil de entender, ya que permite separar la lógica de recorrer la estructura de datos de la lógica de la operación sobre cada elemento, lo que puede hacer que el código sea más fácil de leer y mantener.
 
 
-4. ¿Cuál es la diferencia entre los predicados definidos en Pred.hs y los tests?
+4. ¿Cuál es la diferencia entre los predicados definidos en Pred.hs y los tests?.
 
 # 4. Extras
 aca podriamos aclarar lo de live share
