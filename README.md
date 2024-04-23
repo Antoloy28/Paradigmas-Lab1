@@ -37,7 +37,7 @@ Al responder tranformar cada pregunta en una subsección para que sea más fáci
 1. ¿Por qué están separadas las funcionalidades en los módulos indicados? Explicar detalladamente la responsabilidad de cada módulo.
 
 -Que las funcionalidades esten separadas en los modulos, hace que sea mas legible y entendible ver de donde trabaja cada modulo, ademas es una manera de dividir un problema grande, en problemas mas chicos y poder ir testeando cada uno de estos modulos por separado. Facilita la organizacion y representacion del programa. 
-Cada modulo tiene una representacion clara, por ejemplo el modulo Dibujo se encarga de la sintaxis del programa, mientras que Iterpet se encarga de la semantica/interpretacion del leguaje y de la implementacion de cada figura basica.
+Cada modulo tiene una representacion clara, por ejemplo el modulo Dibujo se encarga de la sintaxis del programa, mientras que Interp se encarga de la semantica/interpretacion del leguaje y de la implementacion de cada figura basica.
 
 -Responsabilidabes de cada modulo:
 Dibujo.hs: Se hace la declaracion de las figuras de nuestro lenguaje, donde definimos los constructores de Dibujo y funciones que       utilizamos con ellas.
@@ -61,6 +61,8 @@ Main.hs: Solicita al usuario que ingrese el nombre de un dibujo y muestra el res
 
 
 4. ¿Cuál es la diferencia entre los predicados definidos en Pred.hs y los tests?.
+
+La diferencia entre los predicados definidos en Pred.hs y los definidos en los tests es que los predicados definidos en Pred.hs sirven para la definicion de funciones que van a usar esos predicados como una condición, que de cumplirse, la funcion ejecutará un efecto en el dibujo que pasemos como parámetro. En cambio, en los tests damos predicados específicos para poder testear que las funciones hechas en Pred.hs tengan el funcionamiento esperado (se cumpla o no el predicado).
 
 # 4. Extras
 aca podriamos aclarar lo de live share
