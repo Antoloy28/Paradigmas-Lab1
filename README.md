@@ -29,12 +29,12 @@ Pueden usar esta checklist para indicar el avance.
 - [ ] Tests para `Pred.hs`.
 
 # 2. Experiencia
-Completar
+Utilizamos la librería Gloss. La experiencia que tuvimos fue completa. Al principio muchas complicaciones para agarrarle la mano de nuevo a haskell sumado a aprender cosas nuevas de haskell y además lograr entender la abstracción con la que estabamos trabajando. Luego, a medida que avanzamos con el laboratorio, las cosas salían más faciles y ya podíamos ver resultados en concreto. Al terminar ya era más divertido jugar con las figuras y hasta agregar colores. Muy bueno :)
 
 # 3. Preguntas
-Al responder tranformar cada pregunta en una subsección para que sea más fácil de leer.
 
-1. ¿Por qué están separadas las funcionalidades en los módulos indicados? Explicar detalladamente la responsabilidad de cada módulo.
+
+## 3.1  ¿Por qué están separadas las funcionalidades en los módulos indicados? Explicar detalladamente la responsabilidad de cada módulo.
 
 -Que las funcionalidades esten separadas en los modulos, hace que sea mas legible y entendible ver de donde trabaja cada modulo, ademas es una manera de dividir un problema grande, en problemas mas chicos y poder ir testeando cada uno de estos modulos por separado. Facilita la organizacion y representacion del programa. 
 Cada modulo tiene una representacion clara, por ejemplo el modulo Dibujo se encarga de la sintaxis del programa, mientras que Interp se encarga de la semantica/interpretacion del leguaje y de la implementacion de cada figura basica.
@@ -47,12 +47,12 @@ Escher.hs: Implementar la semántica/interpretación de las figuras básicas usa
 Main.hs: Solicita al usuario que ingrese el nombre de un dibujo y muestra el resultado de interpretar el dibujo ingresado (si es que existe). También permite solicitar una lista de dibujos y seleccionar uno de ellos para mostrarlo.
 
 
-2. ¿Por qué las figuras básicas no están incluidas en la definición del lenguaje, y en vez de eso, es un parámetro del tipo?
+## 3.2  ¿Por qué las figuras básicas no están incluidas en la definición del lenguaje, y en vez de eso, es un parámetro del tipo?
 
 -La razon por la que las figuras basicas no estan incluidas en la definicion del lenguaje, y en cambio se pasan como un parametro del tipo, es para permitir la flexibilidad y la extensibilidad del lenguaje. Si las figuras basicas fueran parte de la definicion del lenguaje, el lenguaje estaria limitado a un conjunto fijo de formas. Sin embargo, al permitir que las figuras basicas sean especificadas por el usuario, el lenguaje se vuelve mas general y puede adaptarse a diferentes necesidades. En conclusion, al usar parametros de tipo, lo que hacemos es definir un lenguaje que opera sobre "figuras basicas", donde dichas figuras son definidas por el usuario a traves del parametro de tipo. 
 
 
-3. ¿Qué ventaja tiene utilizar una función de `fold` sobre hacer pattern-matching directo?
+## 3.3 ¿Qué ventaja tiene utilizar una función de `fold` sobre hacer pattern-matching directo?
 
 -Utilizar una función de fold puede tener ventajas en términos de modularidad, abstracción y claridad, dependiendo del contexto en el que se esté trabajando.
 - Modularidad porque al utilizar fold, se pueden separar las operaciones de recorrer la estructura y aplicar una operación sobre cada elemento. Esto facilita la creación de módulos
@@ -60,7 +60,7 @@ Main.hs: Solicita al usuario que ingrese el nombre de un dibujo y muestra el res
 - Claridad porque en algunos casos, el uso de fold puede hacer que el código sea más claro y fácil de entender, ya que permite separar la lógica de recorrer la estructura de datos de la lógica de la operación sobre cada elemento, lo que puede hacer que el código sea más fácil de leer y mantener.
 
 
-4. ¿Cuál es la diferencia entre los predicados definidos en Pred.hs y los tests?.
+## 3.4 ¿Cuál es la diferencia entre los predicados definidos en Pred.hs y los tests?.
 
 La diferencia entre los predicados definidos en Pred.hs y los definidos en los tests es que los predicados definidos en Pred.hs sirven para la definicion de funciones que van a usar esos predicados como una condición, que de cumplirse, la funcion ejecutará un efecto en el dibujo que pasemos como parámetro. En cambio, en los tests damos predicados específicos para poder testear que las funciones hechas en Pred.hs tengan el funcionamiento esperado (se cumpla o no el predicado).
 
