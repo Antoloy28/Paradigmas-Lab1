@@ -98,6 +98,7 @@ cuarteto a b c d = Apilar 1 1 (Juntar 1 1 a b) (Juntar 1 1 c d)
 ciclar :: Dibujo a -> Dibujo a
 ciclar a = cuarteto a (r90 a) (r180 a) (r270 a)
 
+
 -- map para nuestro lenguaje
 mapDib :: (a -> b) -> Dibujo a -> Dibujo b
 mapDib f (Figura x) = Figura (f x)
